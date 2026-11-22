@@ -1,0 +1,1894 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AVAX MOTORS — Motos desde Philadelphia a toda Cuba</title>
+  <style>
+    :root {
+      --bg-dark: #0d0e12;
+      --bg-card: #16181f;
+      --bg-card-2: #1e212b;
+      --red-primary: #c81e2b;
+      --red-bright: #e02432;
+      --red-glow: rgba(200, 30, 43, 0.35);
+      --text-main: #f4f5f7;
+      --text-muted: #9ea3b0;
+      --border: rgba(255, 255, 255, 0.09);
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    /* Barra superior */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(12px);
+      background: rgba(13, 14, 18, 0.86);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      font-size: 1.05rem;
+    }
+
+    .brand-badge {
+      background: var(--red-primary);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .balance-pill {
+      background: rgba(200, 30, 43, 0.16);
+      border: 1px solid rgba(224, 36, 50, 0.45);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 10px;
+      padding: 9px 15px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.12s ease, background 0.15s ease, opacity 0.15s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--red-primary);
+      color: #fff;
+      box-shadow: 0 6px 20px var(--red-glow);
+    }
+
+    .btn-primary:hover {
+      background: var(--red-bright);
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.11);
+    }
+
+    .btn-sm {
+      padding: 7px 11px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 78vh;
+      display: flex;
+      align-items: center;
+      background-color: #160507;
+      background-image:
+        linear-gradient(90deg, rgba(13, 14, 18, 0.92) 0%, rgba(13, 14, 18, 0.65) 52%, rgba(13, 14, 18, 0.35) 100%),
+        linear-gradient(180deg, rgba(13, 14, 18, 0.25) 0%, var(--bg-dark) 100%),
+        var(--hero-img, radial-gradient(circle at 70% 45%, #7f1019, #1b0508 70%));
+      background-size: cover;
+      background-position: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 18px;
+      width: 100%;
+    }
+
+    .hero-content {
+      max-width: 620px;
+      padding: 48px 0;
+    }
+
+    .kicker {
+      display: inline-block;
+      background: rgba(200, 30, 43, 0.22);
+      border: 1px solid rgba(224, 36, 50, 0.5);
+      color: #ff9aa2;
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      color: #d6dae3;
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      max-width: 540px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* Franja de respaldo */
+    .trust-strip {
+      margin-top: -36px;
+      position: relative;
+      z-index: 10;
+      margin-bottom: 44px;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .trust-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .trust-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(200, 30, 43, 0.16);
+      color: #ff6b76;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .trust-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+    }
+
+    .trust-card p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* Secciones */
+    section {
+      padding: 44px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+    }
+
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    /* Catálogo */
+    .filters {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .chip.active, .chip:hover {
+      background: var(--red-primary);
+      border-color: var(--red-primary);
+      color: #fff;
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      gap: 18px;
+    }
+
+    .moto-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .moto-thumb {
+      height: 180px;
+      background: linear-gradient(135deg, #25080b, #14161d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .moto-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .moto-placeholder {
+      text-align: center;
+      padding: 12px;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .fav-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(13, 14, 18, 0.78);
+      border: 1px solid var(--border);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .fav-btn.active {
+      color: #ff4d5a;
+      border-color: #ff4d5a;
+    }
+
+    .moto-body {
+      padding: 16px;
+    }
+
+    .moto-cat {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #ff7b85;
+      font-weight: 700;
+    }
+
+    .moto-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      margin: 4px 0 6px;
+    }
+
+    .moto-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .saldo-calc {
+      font-size: 0.82rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--bg-card-2);
+      margin-bottom: 12px;
+    }
+
+    .saldo-ok {
+      color: var(--success);
+      font-weight: 600;
+    }
+
+    .saldo-faltante {
+      color: #fbbf24;
+      font-weight: 600;
+    }
+
+    .moto-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    /* Panel de Usuario */
+    .dashboard-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background: var(--bg-card-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 8px 14px;
+      border-radius: 9px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: var(--red-primary);
+      border-color: var(--red-primary);
+      color: #fff;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+    }
+
+    .sub-box {
+      background: var(--bg-card-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .sub-box h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .field {
+      margin-bottom: 12px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 10px 12px;
+      border-radius: 9px;
+      font-size: 0.9rem;
+    }
+
+    .field input:focus, .field select:focus, .field textarea:focus {
+      outline: none;
+      border-color: var(--red-bright);
+    }
+
+    .pw-rules {
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .pw-rules li.ok {
+      color: var(--success);
+    }
+
+    .list-item {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+      font-size: 0.86rem;
+    }
+
+    /* Info sections */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+    }
+
+    .info-card h3 {
+      font-size: 1.12rem;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    .info-card p, .info-card li {
+      font-size: 0.9rem;
+      color: #c7ccd6;
+      margin-bottom: 8px;
+    }
+
+    .info-card ul {
+      padding-left: 18px;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(5px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      max-width: 480px;
+      width: 100%;
+      padding: 22px;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    /* Notificación de comprobación (sin contador numérico) */
+    .checking-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 10, 14, 0.84);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 18px;
+    }
+
+    .checking-overlay.open {
+      display: flex;
+    }
+
+    .checking-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(224, 36, 50, 0.45);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      text-align: center;
+      max-width: 340px;
+      width: 100%;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .spinner {
+      width: 44px;
+      height: 44px;
+      border: 4px solid rgba(255, 255, 255, 0.14);
+      border-top-color: var(--red-bright);
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg-card-2);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      z-index: 150;
+      max-width: 340px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+      display: none;
+    }
+
+    .toast.show {
+      display: block;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 26px 0;
+      margin-top: 30px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-wrap">
+      <a href="#" class="brand">
+        <span>AVAX MOTORS</span>
+        <span class="brand-badge">PHL → CUBA</span>
+      </a>
+      <nav>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#panel-usuario">Mi Cuenta y Saldo</a>
+        <a href="#como-comprar">Cómo Comprar</a>
+        <a href="#como-pagar">Cómo Pagar</a>
+        <a href="#ayuda">Centro de Ayuda</a>
+      </nav>
+      <div class="nav-actions" id="navActions"></div>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="container">
+      <div class="hero-content">
+        <span class="kicker">Sede en Philadelphia, EE. UU. · Envíos a toda Cuba</span>
+        <h1>Motos nuevas desde EE. UU. a toda Cuba</h1>
+        <p>
+          Gestiona tu saldo, aparta o compra tu motocicleta y coordina tu envío con atención directa por WhatsApp al +13433268059.
+        </p>
+        <div class="hero-buttons">
+          <a href="#catalogo" class="btn btn-primary">Ver Catálogo</a>
+          <button type="button" class="btn btn-ghost" onclick="openAuthModal('login')">Acceder a mi cuenta</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container trust-strip">
+    <div class="trust-grid">
+      <div class="trust-card">
+        <div class="trust-icon">PHL</div>
+        <div>
+          <h3>Sede en Philadelphia</h3>
+          <p>Operación y coordinación desde Estados Unidos.</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">CU</div>
+        <div>
+          <h3>Envío a toda Cuba</h3>
+          <p>Máx. 72 h en occidente/centro-oeste y máx. 5 días en el resto.</p>
+        </div>
+      </div>
+      <div class="trust-card">
+        <div class="trust-icon">✓</div>
+        <div>
+          <h3>Atención Directa</h3>
+          <p>Soporte y pagos coordinados por WhatsApp (+13433268059).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Catálogo -->
+  <section id="catalogo">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Catálogo de Motocicletas</h2>
+          <p>Consulta precios, calcula cuánto saldo te falta, guarda favoritos, aparta con tu saldo o compra.</p>
+        </div>
+        <div id="saldoResumenCatalogo" class="balance-pill">Saldo: $0.00 USD</div>
+      </div>
+
+      <div class="filters" id="categoryFilters">
+        <button type="button" class="chip active" data-cat="Todas">Todas</button>
+        <button type="button" class="chip" data-cat="Combustión">Combustión</button>
+        <button type="button" class="chip" data-cat="Eléctrica">Eléctrica</button>
+        <button type="button" class="chip" data-cat="Favoritas">Favoritas</button>
+      </div>
+
+      <div class="catalog-grid" id="catalogGrid"></div>
+    </div>
+  </section>
+
+  <!-- Panel del Usuario -->
+  <section id="panel-usuario">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Panel de Usuario y Billetera</h2>
+          <p>Tu cuenta, saldo, códigos de acreditación, retiros, destinatario en Cuba, pedidos y respaldo.</p>
+        </div>
+      </div>
+      <div id="userDashboardContainer"></div>
+    </div>
+  </section>
+
+  <!-- Secciones informativas para el cliente -->
+  <section id="quienes-somos">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Información de la Plataforma</h2>
+          <p>Todo lo que necesitas saber para operar con claridad en AVAX MOTORS.</p>
+        </div>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-card" id="quienes-somos-card">
+          <h3>Quiénes Somos</h3>
+          <p>
+            En <strong>AVAX MOTORS</strong> somos una plataforma dedicada a la venta, reserva y envío de motocicletas con sede operativa en <strong>Philadelphia, Estados Unidos</strong>, y entregas dirigidas a <strong>toda Cuba</strong>. Nuestro objetivo es ofrecerte una experiencia clara, ordenada y directa para administrar tu saldo, elegir la motocicleta que buscas y coordinar tu pedido con respaldo y sencillez.
+          </p>
+          <p>
+            Trabajamos con atención directa por <strong>WhatsApp</strong> a través de nuestro número oficial <strong>+13433268059</strong>, donde coordinamos contigo los métodos de pago, la entrega de códigos para acreditar saldo, los retiros de fondos y el seguimiento de tus compras o apartados. Además, la plataforma funciona directamente desde el navegador de tu teléfono y guarda tu información en el almacenamiento local de tu dispositivo para que tengas acceso rápido a tu cuenta, tu saldo y tus movimientos.
+          </p>
+        </div>
+
+        <div class="info-card" id="alcance-card">
+          <h3>Alcance</h3>
+          <ul>
+            <li><strong>Tiempos de entrega en Cuba:</strong> En <strong>La Habana, Matanzas, Artemisa, Pinar del Río y Mayabeque</strong> entregamos en un tiempo máximo de <strong>72 horas</strong>. En el <strong>resto de las provincias</strong> de Cuba, el plazo máximo de entrega es de <strong>5 días</strong>.</li>
+            <li><strong>Cuenta y acceso protegido:</strong> Puedes registrarte con tu correo electrónico y una contraseña segura (confirmándola al crear tu cuenta) o iniciar sesión con tus credenciales guardadas en tu teléfono.</li>
+            <li><strong>Billetera interna:</strong> Te permite solicitar recargas de saldo por WhatsApp, acreditar fondos mediante un código de 9 dígitos, revisar tu historial de movimientos, generar un respaldo de tu cuenta y solicitar retiros de saldo cuando no desees realizar una compra.</li>
+            <li><strong>Catálogo, apartado y seguimiento:</strong> Puedes explorar las motocicletas disponibles, ver cuánto saldo te falta para comprar cada modelo, guardar tus motos favoritas, apartar o reservar una motocicleta usando tu saldo y consultar el estado de tus pedidos.</li>
+          </ul>
+        </div>
+
+        <div class="info-card" id="como-comprar">
+          <h3>Cómo Comprar</h3>
+          <ol style="padding-left: 18px;">
+            <li><strong>Crea tu cuenta o inicia sesión:</strong> Si es tu primera vez, regístrate con tu correo electrónico y crea una contraseña segura confirmándola dos veces. Si ya tienes cuenta, entra con tu correo y contraseña.</li>
+            <li><strong>Revisa o agrega tu saldo:</strong> Comprueba tu saldo disponible en la plataforma. En cada motocicleta podrás ver si tu saldo ya cubre el valor o cuánto te falta para completarla. Si necesitas saldo, solicita una recarga desde la sección correspondiente.</li>
+            <li><strong>Registra los datos del destinatario en Cuba:</strong> Completa o selecciona en tu perfil los datos de quien recibirá la motocicleta en Cuba (nombre completo, identificación, teléfono, provincia y notas adicionales si deseas añadirlas). Ten en cuenta que la entrega toma un máximo de <strong>72 horas</strong> en <strong>La Habana, Matanzas, Artemisa, Pinar del Río y Mayabeque</strong>, y un máximo de <strong>5 días</strong> en el <strong>resto de las provincias</strong>.</li>
+            <li><strong>Confirma tu compra:</strong> Cuando estés listo, realiza la compra con tu saldo disponible. El importe correspondiente se descontará de tu saldo, quedará registrado en <strong>Mis pedidos</strong> y en tu <strong>Historial de billetera</strong>, y podrás enviar los detalles por <strong>WhatsApp (+13433268059)</strong> para coordinar el envío.</li>
+          </ol>
+        </div>
+
+        <div class="info-card" id="apartado-card">
+          <h3>Apartado / Reserva de Moto con Saldo</h3>
+          <p>
+            Si quieres apartar una motocicleta antes de completar la compra o coordinar los detalles finales del envío, puedes utilizar la opción de <strong>Apartar / Reservar con saldo</strong>:
+          </p>
+          <ul>
+            <li><strong>Cómo funciona:</strong> Elige la motocicleta que te interesa, selecciona la opción de apartado y define el monto que deseas destinar desde tu saldo disponible.</li>
+            <li><strong>Registro en tu cuenta:</strong> El monto apartado se separa de tu saldo en el teléfono, queda asentado en tu <strong>Historial de billetera</strong> y aparece en <strong>Mis pedidos</strong> como una reserva registrada.</li>
+            <li><strong>Coordinación por WhatsApp:</strong> Una vez hecho el apartado, podrás enviar la información de tu reserva a nuestro WhatsApp oficial <strong>+13433268059</strong> para coordinar los siguientes pasos.</li>
+          </ul>
+        </div>
+
+        <div class="info-card" id="como-pagar">
+          <h3>Cómo Pagar</h3>
+          <p><strong>Agregar saldo a la plataforma:</strong></p>
+          <ol style="padding-left: 18px; margin-bottom: 10px;">
+            <li>Completa en el formulario de recarga tu <strong>Nombre completo</strong>, el <strong>Método de pago</strong> acordado (<strong>Criptomonedas</strong>, <strong>Tropipay</strong>, <strong>Zelle</strong>, entre otros métodos disponibles) y el <strong>Monto a depositar</strong>.</li>
+            <li>Al enviar la orden, la plataforma generará tu solicitud automáticamente y te llevará a <strong>WhatsApp (+13433268059)</strong> para coordinar el pago.</li>
+            <li>Una vez coordinado el pago por WhatsApp, recibirás un <strong>código de 9 dígitos</strong>.</li>
+            <li>Pega ese código en la plataforma para que se procese y se acredite el <strong>monto a depositar</strong> que indicaste en tu orden.</li>
+          </ol>
+          <p><strong>Retirar tu saldo:</strong></p>
+          <p>
+            Si decides no comprar o deseas retirar tu saldo disponible, puedes solicitar un retiro desde la plataforma indicando el monto a retirar, el método de tu preferencia (<strong>Zelle</strong>, <strong>CashApp</strong>, <strong>Wise</strong>, <strong>PayPal</strong>, entre otros) y los datos necesarios, coordinando la operación por <strong>WhatsApp (+13433268059)</strong>. El movimiento quedará registrado en tu historial.
+          </p>
+        </div>
+
+        <div class="info-card" id="ayuda">
+          <h3>Centro de Ayuda / Reglas Claras de la Plataforma</h3>
+          <ul>
+            <li><strong>Tiempos de entrega por provincia:</strong> Para <strong>La Habana, Matanzas, Artemisa, Pinar del Río y Mayabeque</strong>, el tiempo máximo de entrega es de <strong>72 horas</strong>. Para el <strong>resto de las provincias</strong>, el plazo máximo es de <strong>5 días</strong>.</li>
+            <li><strong>Información guardada en tu teléfono:</strong> Tu cuenta, contraseña, saldo, perfil de destinatario, favoritos, pedidos e historial se guardan en el navegador de tu teléfono. <strong>No borres los datos o el historial/caché del navegador</strong> sin antes generar tu <strong>Respaldo de cuenta</strong>, ya que borrar los datos del navegador puede eliminar lo guardado en el dispositivo.</li>
+            <li><strong>Respaldo de cuenta:</strong> Usa la opción de respaldo si cambias de teléfono o deseas guardar una copia de tu información registrada en el navegador.</li>
+            <li><strong>Códigos de 9 dígitos:</strong> Cada código de 9 dígitos es de uso único en tu navegador y acredita el <strong>monto a depositar</strong> que registraste en tu orden una vez completada la comprobación en la plataforma.</li>
+            <li><strong>Atención oficial por WhatsApp:</strong> Todos los depósitos, entregas de códigos, retiros y coordinaciones de compras o apartados se gestionan únicamente mediante nuestro WhatsApp oficial <strong>+13433268059</strong>.</li>
+            <li><strong>Cuidado de tu cuenta:</strong> Crea una contraseña que cumpla con los requisitos de seguridad al registrarte y cierra o bloquea tu sesión si otras personas tienen acceso a tu teléfono.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <strong>AVAX MOTORS</strong> · Sede en Philadelphia, EE. UU. · Envíos a toda Cuba · WhatsApp: +13433268059
+    </div>
+  </footer>
+
+  <!-- Modal Acceso (Login / Registro) -->
+  <div class="modal-backdrop" id="authModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="authModalTitle">Iniciar sesión</h3>
+        <button type="button" class="close-btn" onclick="closeAuthModal()">×</button>
+      </div>
+      <div style="display:flex; gap:8px; margin-bottom:14px;">
+        <button type="button" class="btn btn-sm btn-primary" id="switchLoginBtn" onclick="setAuthMode('login')">Ya tengo cuenta</button>
+        <button type="button" class="btn btn-sm btn-ghost" id="switchRegisterBtn" onclick="setAuthMode('register')">Registrarse por primera vez</button>
+      </div>
+
+      <!-- Formulario Login -->
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="field">
+          <label for="loginEmail">Correo electrónico</label>
+          <input type="email" id="loginEmail" required placeholder="correo@ejemplo.com" />
+        </div>
+        <div class="field">
+          <label for="loginPassword">Contraseña</label>
+          <input type="password" id="loginPassword" required placeholder="Tu contraseña" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Entrar</button>
+      </form>
+
+      <!-- Formulario Registro -->
+      <form id="registerForm" style="display:none;" onsubmit="handleRegister(event)">
+        <div class="field">
+          <label for="regName">Nombre completo</label>
+          <input type="text" id="regName" required placeholder="Tu nombre y apellidos" />
+        </div>
+        <div class="field">
+          <label for="regEmail">Correo electrónico</label>
+          <input type="email" id="regEmail" required placeholder="correo@ejemplo.com" />
+        </div>
+        <div class="field">
+          <label for="regPassword">Contraseña</label>
+          <input type="password" id="regPassword" required oninput="checkPasswordStrength()" placeholder="Crea una contraseña segura" />
+        </div>
+        <div class="field">
+          <label for="regPasswordConfirm">Confirmar contraseña</label>
+          <input type="password" id="regPasswordConfirm" required oninput="checkPasswordStrength()" placeholder="Repite tu contraseña" />
+        </div>
+        <ul class="pw-rules" id="pwRules">
+          <li id="rule-len">• Mínimo 8 caracteres</li>
+          <li id="rule-upper">• Al menos 1 letra mayúscula</li>
+          <li id="rule-lower">• Al menos 1 letra minúscula</li>
+          <li id="rule-num">• Al menos 1 número</li>
+          <li id="rule-spec">• Al menos 1 carácter especial (!@#$%^&*)</li>
+          <li id="rule-match">• Ambas contraseñas coinciden</li>
+        </ul>
+        <button type="submit" class="btn btn-primary" style="width:100%; margin-top:12px;">Crear cuenta</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal Compra / Apartado -->
+  <div class="modal-backdrop" id="orderModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="orderModalTitle">Procesar solicitud</h3>
+        <button type="button" class="close-btn" onclick="closeOrderModal()">×</button>
+      </div>
+      <form id="motoOrderForm" onsubmit="handleMotoOrder(event)">
+        <input type="hidden" id="orderMotoId" />
+        <input type="hidden" id="orderMode" />
+        <div id="orderMotoSummary" class="list-item"></div>
+
+        <div class="field" id="apartadoMontoField" style="display:none;">
+          <label for="apartadoAmount">Monto a apartar con tu saldo (USD)</label>
+          <input type="number" id="apartadoAmount" min="1" step="0.01" />
+        </div>
+
+        <div class="field">
+          <label for="destName">Destinatario en Cuba (Nombre completo)</label>
+          <input type="text" id="destName" required />
+        </div>
+        <div class="field">
+          <label for="destCi">Carné de identidad / Documento</label>
+          <input type="text" id="destCi" required />
+        </div>
+        <div class="field">
+          <label for="destPhone">Teléfono en Cuba</label>
+          <input type="text" id="destPhone" required />
+        </div>
+        <div class="field">
+          <label for="destProvince">Provincia en Cuba</label>
+          <select id="destProvince" onchange="updateDeliveryNotice()" required>
+            <option value="La Habana">La Habana</option>
+            <option value="Matanzas">Matanzas</option>
+            <option value="Artemisa">Artemisa</option>
+            <option value="Pinar del Río">Pinar del Río</option>
+            <option value="Mayabeque">Mayabeque</option>
+            <option value="Villa Clara">Villa Clara</option>
+            <option value="Cienfuegos">Cienfuegos</option>
+            <option value="Sancti Spíritus">Sancti Spíritus</option>
+            <option value="Ciego de Ávila">Ciego de Ávila</option>
+            <option value="Camagüey">Camagüey</option>
+            <option value="Las Tunas">Las Tunas</option>
+            <option value="Holguín">Holguín</option>
+            <option value="Granma">Granma</option>
+            <option value="Santiago de Cuba">Santiago de Cuba</option>
+            <option value="Guantánamo">Guantánamo</option>
+            <option value="Isla de la Juventud">Isla de la Juventud</option>
+          </select>
+          <small id="deliveryTimeHint" style="display:block; margin-top:6px; color:#93c5fd;"></small>
+        </div>
+        <div class="field">
+          <label for="destNotes">Notas adicionales (opcional)</label>
+          <textarea id="destNotes" rows="2" placeholder="Preferencia de color, punto de referencia, etc."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;" id="submitMotoOrderBtn">Confirmar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notificación de comprobación (7 segundos sin contador visible) -->
+  <div class="checking-overlay" id="checkingOverlay">
+    <div class="checking-box">
+      <div class="spinner"></div>
+      <h3 id="checkingTitle">Comprobando...</h3>
+      <p id="checkingDesc" style="color:var(--text-muted); font-size:0.88rem; margin-top:6px;">
+        Validando código y preparando acreditación de saldo.
+      </p>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // =========================================================================
+    // CONFIGURACIÓN PRINCIPAL DE AVAX MOTORS
+    // =========================================================================
+    const WHATSAPP_NUMBER = "13433268059";
+    const HERO_BG_IMAGE = "url('fondo.jpg')"; // Cambia 'fondo.jpg' por el nombre de tu imagen en GitHub
+
+    // 30 códigos únicos de 9 dígitos generados al azar dentro del HTML
+    const VALID_NINE_DIGIT_CODES = [
+      "492817305", "817264930", "104958273", "638291047", "920184756",
+      "375910284", "582910473", "749102836", "264819503", "891047265",
+      "519283746", "604918273", "318274950", "947182635", "205819374",
+      "782910465", "439182756", "671029384", "850192736", "129384756",
+      "563819204", "904817263", "382910475", "716283940", "491028375",
+      "827364915", "650192837", "294817360", "973819204", "148293756"
+    ];
+
+    // Modelos iniciales del catálogo (puedes editar nombres, precios e imágenes)
+    const MOTO_CATALOG = [
+      {
+        id: "moto-1",
+        name: "AVAX Sport 200cc",
+        category: "Combustión",
+        price: 1850,
+        image: "",
+        specs: "Motor 200cc · Freno de disco delantero · Arranque eléctrico y pedal"
+      },
+      {
+        id: "moto-2",
+        name: "AVAX Volt Pro 2000W",
+        category: "Eléctrica",
+        price: 1450,
+        image: "",
+        specs: "Motor 2000W · Batería de alta autonomía · Suspensión reforzada"
+      },
+      {
+        id: "moto-3",
+        name: "AVAX Cruiser 250cc",
+        category: "Combustión",
+        price: 2450,
+        image: "",
+        specs: "Motor 250cc · Chasis reforzado · Ideal para trayectos largos"
+      },
+      {
+        id: "moto-4",
+        name: "AVAX City Electric 1500W",
+        category: "Eléctrica",
+        price: 1190,
+        image: "",
+        specs: "Motor 1500W · Uso urbano ágil · Carga práctica"
+      }
+    ];
+
+    const FAST_DELIVERY_PROVINCES = [
+      "La Habana",
+      "Matanzas",
+      "Artemisa",
+      "Pinar del Río",
+      "Mayabeque"
+    ];
+
+    const STORAGE_KEY = "avax_motors_platform_v1";
+
+    // =========================================================================
+    // ESTADO EN LOCALSTORAGE
+    // =========================================================================
+    function getDefaultState() {
+      return {
+        users: {},          // { [email]: { name, email, password, balance, favorites, recipient, orders, history, usedCodes, pendingDeposit } }
+        currentUser: null
+      };
+    }
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return getDefaultState();
+        const parsed = JSON.parse(raw);
+        return Object.assign(getDefaultState(), parsed);
+      } catch (e) {
+        return getDefaultState();
+      }
+    }
+
+    let state = loadState();
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function getActiveUser() {
+      if (!state.currentUser || !state.users[state.currentUser]) return null;
+      return state.users[state.currentUser];
+    }
+
+    // =========================================================================
+    // UTILIDADES UI
+    // =========================================================================
+    document.documentElement.style.setProperty("--hero-img", HERO_BG_IMAGE);
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => toast.classList.remove("show"), 3800);
+    }
+
+    function formatMoney(n) {
+      return "$" + Number(n || 0).toFixed(2) + " USD";
+    }
+
+    function nowStamp() {
+      return new Date().toLocaleString("es-ES", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
+    function getDeliveryDaysText(province) {
+      if (FAST_DELIVERY_PROVINCES.includes(province)) {
+        return "Tiempo máximo de entrega: 72 horas.";
+      }
+      return "Plazo máximo de entrega: 5 días.";
+    }
+
+    function buildWhatsAppUrl(text) {
+      return "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+    }
+
+    // =========================================================================
+    // AUTENTICACIÓN Y CONTRASEÑA SEGURA
+    // =========================================================================
+    function openAuthModal(mode = "login") {
+      setAuthMode(mode);
+      document.getElementById("authModal").classList.add("open");
+    }
+
+    function closeAuthModal() {
+      document.getElementById("authModal").classList.remove("open");
+    }
+
+    function setAuthMode(mode) {
+      const isLogin = mode === "login";
+      document.getElementById("authModalTitle").textContent = isLogin ? "Iniciar sesión" : "Crear cuenta nueva";
+      document.getElementById("loginForm").style.display = isLogin ? "block" : "none";
+      document.getElementById("registerForm").style.display = isLogin ? "none" : "block";
+      document.getElementById("switchLoginBtn").className = "btn btn-sm " + (isLogin ? "btn-primary" : "btn-ghost");
+      document.getElementById("switchRegisterBtn").className = "btn btn-sm " + (!isLogin ? "btn-primary" : "btn-ghost");
+      if (!isLogin) checkPasswordStrength();
+    }
+
+    function evaluatePassword(pw, confirmPw = "") {
+      const rules = {
+        len: pw.length >= 8,
+        upper: /[A-Z]/.test(pw),
+        lower: /[a-z]/.test(pw),
+        num: /[0-9]/.test(pw),
+        spec: /[^A-Za-z0-9]/.test(pw),
+        match: pw.length > 0 && pw === confirmPw
+      };
+      return rules;
+    }
+
+    function checkPasswordStrength() {
+      const pw = document.getElementById("regPassword").value;
+      const cpw = document.getElementById("regPasswordConfirm").value;
+      const r = evaluatePassword(pw, cpw);
+
+      document.getElementById("rule-len").className = r.len ? "ok" : "";
+      document.getElementById("rule-upper").className = r.upper ? "ok" : "";
+      document.getElementById("rule-lower").className = r.lower ? "ok" : "";
+      document.getElementById("rule-num").className = r.num ? "ok" : "";
+      document.getElementById("rule-spec").className = r.spec ? "ok" : "";
+      document.getElementById("rule-match").className = r.match ? "ok" : "";
+
+      return Object.values(r).every(Boolean);
+    }
+
+    function handleRegister(e) {
+      e.preventDefault();
+      const name = document.getElementById("regName").value.trim();
+      const email = document.getElementById("regEmail").value.trim().toLowerCase();
+      const pw = document.getElementById("regPassword").value;
+      const cpw = document.getElementById("regPasswordConfirm").value;
+
+      if (!checkPasswordStrength()) {
+        showToast("Revisa que tu contraseña cumpla todos los parámetros de seguridad.");
+        return;
+      }
+
+      if (state.users[email]) {
+        showToast("Este correo electrónico ya está registrado en este dispositivo.");
+        return;
+      }
+
+      state.users[email] = {
+        name,
+        email,
+        password: pw,
+        balance: 0,
+        favorites: [],
+        recipient: { name: "", ci: "", phone: "", province: "La Habana", notes: "" },
+        orders: [],
+        history: [],
+        usedCodes: [],
+        pendingDeposit: null
+      };
+      state.currentUser = email;
+      saveState();
+      closeAuthModal();
+      renderAll();
+      showToast("Cuenta creada correctamente.");
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+      const pw = document.getElementById("loginPassword").value;
+
+      const user = state.users[email];
+      if (!user || user.password !== pw) {
+        showToast("Correo electrónico o contraseña incorrectos.");
+        return;
+      }
+
+      state.currentUser = email;
+      saveState();
+      closeAuthModal();
+      renderAll();
+      showToast("Sesión iniciada.");
+    }
+
+    function logoutUser() {
+      state.currentUser = null;
+      saveState();
+      renderAll();
+      showToast("Sesión cerrada.");
+    }
+
+    // =========================================================================
+    // CATÁLOGO, FAVORITOS Y CALCULADORA DE SALDO FALTANTE
+    // =========================================================================
+    let activeCategory = "Todas";
+
+    document.getElementById("categoryFilters").addEventListener("click", (e) => {
+      const btn = e.target.closest(".chip");
+      if (!btn) return;
+      document.querySelectorAll("#categoryFilters .chip").forEach((c) => c.classList.remove("active"));
+      btn.classList.add("active");
+      activeCategory = btn.dataset.cat;
+      renderCatalog();
+    });
+
+    function toggleFavorite(motoId) {
+      const user = getActiveUser();
+      if (!user) {
+        openAuthModal("login");
+        showToast("Inicia sesión para guardar favoritos.");
+        return;
+      }
+      const idx = user.favorites.indexOf(motoId);
+      if (idx >= 0) {
+        user.favorites.splice(idx, 1);
+        showToast("Eliminada de favoritos.");
+      } else {
+        user.favorites.push(motoId);
+        showToast("Guardada en favoritos.");
+      }
+      saveState();
+      renderCatalog();
+      renderDashboard();
+    }
+
+    function renderCatalog() {
+      const user = getActiveUser();
+      const balance = user ? Number(user.balance || 0) : 0;
+      const favs = user ? user.favorites || [] : [];
+
+      document.getElementById("saldoResumenCatalogo").textContent = "Saldo disponible: " + formatMoney(balance);
+
+      const list = MOTO_CATALOG.filter((m) => {
+        if (activeCategory === "Todas") return true;
+        if (activeCategory === "Favoritas") return favs.includes(m.id);
+        return m.category === activeCategory;
+      });
+
+      const grid = document.getElementById("catalogGrid");
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="sub-box"><p style="color:var(--text-muted);">No hay motocicletas en esta vista.</p></div>`;
+        return;
+      }
+
+      grid.innerHTML = list.map((m) => {
+        const isFav = favs.includes(m.id);
+        const diff = m.price - balance;
+        const canBuy = user && balance >= m.price;
+
+        const saldoStatusHtml = !user
+          ? `<div class="saldo-calc"><span class="saldo-faltante">Inicia sesión para ver si tu saldo alcanza (${formatMoney(m.price)}).</span></div>`
+          : canBuy
+            ? `<div class="saldo-calc"><span class="saldo-ok">✓ Tu saldo (${formatMoney(balance)}) cubre el precio.</span></div>`
+            : `<div class="saldo-calc"><span class="saldo-faltante">Tu saldo: ${formatMoney(balance)} · Te faltan ${formatMoney(diff)}.</span></div>`;
+
+        const thumbContent = m.image
+          ? `<img src="${m.image}" alt="${m.name}" />`
+          : `<div class="moto-placeholder">${m.name}<br><span style="font-size:0.76rem; font-weight:500;">${m.category}</span></div>`;
+
+        return `
+          <article class="moto-card">
+            <div>
+              <div class="moto-thumb">
+                ${thumbContent}
+                <button type="button" class="fav-btn ${isFav ? "active" : ""}" onclick="toggleFavorite('${m.id}')" title="Favorito">♥</button>
+              </div>
+              <div class="moto-body">
+                <div class="moto-cat">${m.category}</div>
+                <h3 class="moto-title">${m.name}</h3>
+                <div class="moto-price">${formatMoney(m.price)}</div>
+                <p style="font-size:0.83rem; color:var(--text-muted); margin-bottom:10px;">${m.specs}</p>
+                ${saldoStatusHtml}
+                <div class="moto-actions">
+                  <button type="button" class="btn btn-ghost btn-sm" onclick="openMotoOrderModal('${m.id}', 'apartado')">Apartar</button>
+                  <button type="button" class="btn btn-primary btn-sm" onclick="openMotoOrderModal('${m.id}', 'compra')">Comprar</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // COMPRA Y APARTADO CON SALDO
+    // =========================================================================
+    function openMotoOrderModal(motoId, mode) {
+      const user = getActiveUser();
+      if (!user) {
+        openAuthModal("login");
+        showToast("Primero inicia sesión o crea tu cuenta.");
+        return;
+      }
+
+      const moto = MOTO_CATALOG.find((x) => x.id === motoId);
+      if (!moto) return;
+
+      document.getElementById("orderMotoId").value = moto.id;
+      document.getElementById("orderMode").value = mode;
+      document.getElementById("orderModalTitle").textContent =
+        mode === "compra" ? "Comprar motocicleta con saldo" : "Apartar / Reservar motocicleta con saldo";
+      document.getElementById("submitMotoOrderBtn").textContent =
+        mode === "compra" ? "Confirmar compra" : "Confirmar apartado";
+
+      document.getElementById("orderMotoSummary").innerHTML = `
+        <strong>${moto.name}</strong> · ${moto.category}<br>
+        Precio total: <strong>${formatMoney(moto.price)}</strong> · Tu saldo actual: <strong>${formatMoney(user.balance)}</strong>
+      `;
+
+      const apartadoField = document.getElementById("apartadoMontoField");
+      const apartadoInput = document.getElementById("apartadoAmount");
+      if (mode === "apartado") {
+        apartadoField.style.display = "block";
+        apartadoInput.max = moto.price;
+        apartadoInput.value = Math.min(user.balance > 0 ? user.balance : 200, moto.price).toFixed(2);
+      } else {
+        apartadoField.style.display = "none";
+      }
+
+      const rec = user.recipient || {};
+      document.getElementById("destName").value = rec.name || "";
+      document.getElementById("destCi").value = rec.ci || "";
+      document.getElementById("destPhone").value = rec.phone || "";
+      document.getElementById("destProvince").value = rec.province || "La Habana";
+      document.getElementById("destNotes").value = rec.notes || "";
+      updateDeliveryNotice();
+
+      document.getElementById("orderModal").classList.add("open");
+    }
+
+    function closeOrderModal() {
+      document.getElementById("orderModal").classList.remove("open");
+    }
+
+    function updateDeliveryNotice() {
+      const prov = document.getElementById("destProvince").value;
+      document.getElementById("deliveryTimeHint").textContent = getDeliveryDaysText(prov);
+    }
+
+    function handleMotoOrder(e) {
+      e.preventDefault();
+      const user = getActiveUser();
+      if (!user) return;
+
+      const motoId = document.getElementById("orderMotoId").value;
+      const mode = document.getElementById("orderMode").value;
+      const moto = MOTO_CATALOG.find((x) => x.id === motoId);
+      if (!moto) return;
+
+      const destName = document.getElementById("destName").value.trim();
+      const destCi = document.getElementById("destCi").value.trim();
+      const destPhone = document.getElementById("destPhone").value.trim();
+      const destProvince = document.getElementById("destProvince").value;
+      const destNotes = document.getElementById("destNotes").value.trim();
+
+      let amountToCharge = moto.price;
+      if (mode === "apartado") {
+        amountToCharge = parseFloat(document.getElementById("apartadoAmount").value);
+        if (isNaN(amountToCharge) || amountToCharge <= 0 || amountToCharge > moto.price) {
+          showToast("Ingresa un monto de apartado válido.");
+          return;
+        }
+      }
+
+      if (Number(user.balance) < amountToCharge) {
+        const faltante = amountToCharge - Number(user.balance);
+        showToast("Saldo insuficiente. Te faltan " + formatMoney(faltante) + ".");
+        return;
+      }
+
+      // Guardar perfil de destinatario
+      user.recipient = { name: destName, ci: destCi, phone: destPhone, province: destProvince, notes: destNotes };
+
+      // Descontar saldo
+      user.balance = Number((Number(user.balance) - amountToCharge).toFixed(2));
+
+      const orderId = (mode === "compra" ? "CMP-" : "APT-") + Math.floor(100000 + Math.random() * 900000);
+      const orderRecord = {
+        id: orderId,
+        type: mode === "compra" ? "Compra" : "Apartado / Reserva",
+        motoName: moto.name,
+        motoPrice: moto.price,
+        chargedAmount: amountToCharge,
+        recipient: { name: destName, ci: destCi, phone: destPhone, province: destProvince, notes: destNotes },
+        deliveryEstimate: getDeliveryDaysText(destProvince),
+        status: mode === "compra" ? "Registrada - Coordinar envío" : "Apartado registrado - Coordinar seguimiento",
+        date: nowStamp()
+      };
+
+      user.orders.unshift(orderRecord);
+      user.history.unshift({
+        id: "MOV-" + Math.floor(100000 + Math.random() * 900000),
+        type: mode === "compra" ? "Compra de motocicleta" : "Apartado de motocicleta",
+        amount: -amountToCharge,
+        detail: `${moto.name} (${orderId})`,
+        date: nowStamp()
+      });
+
+      saveState();
+      closeOrderModal();
+      renderAll();
+
+      const waMsg =
+        `Hola AVAX MOTORS, soy ${user.name} (${user.email}).\n` +
+        `${orderRecord.type}: ${orderId}\n` +
+        `Modelo: ${moto.name} (Precio: ${formatMoney(moto.price)})\n` +
+        `Monto descontado de saldo: ${formatMoney(amountToCharge)}\n` +
+        `Destinatario en Cuba: ${destName} | CI: ${destCi} | Tel: ${destPhone} | Provincia: ${destProvince}\n` +
+        `${getDeliveryDaysText(destProvince)}` +
+        (destNotes ? `\nNotas: ${destNotes}` : "");
+
+      showToast(orderRecord.type + " registrada.");
+      window.open(buildWhatsAppUrl(waMsg), "_blank");
+    }
+
+    // =========================================================================
+    // BILLETERA: DEPÓSITO -> WHATSAPP -> CÓDIGO DE 9 DÍGITOS (7s) -> RETIRO
+    // =========================================================================
+    let activeTab = "billetera";
+
+    function setActiveTab(tab) {
+      activeTab = tab;
+      renderDashboard();
+    }
+
+    function handleDepositOrder(e) {
+      e.preventDefault();
+      const user = getActiveUser();
+      if (!user) return;
+
+      const fullName = document.getElementById("depFullName").value.trim();
+      const method = document.getElementById("depMethod").value;
+      const amount = parseFloat(document.getElementById("depAmount").value);
+
+      if (!fullName || !method || isNaN(amount) || amount <= 0) {
+        showToast("Completa nombre completo, método de pago y monto a depositar.");
+        return;
+      }
+
+      const orderCode = "DEP-" + Math.floor(100000 + Math.random() * 900000);
+      user.pendingDeposit = {
+        orderCode,
+        fullName,
+        method,
+        amount: Number(amount.toFixed(2)),
+        date: nowStamp()
+      };
+      saveState();
+      renderDashboard();
+
+      const waMsg =
+        `Hola AVAX MOTORS, he generado una orden para agregar saldo:\n` +
+        `Orden: ${orderCode}\n` +
+        `Nombre completo: ${fullName}\n` +
+        `Método de pago: ${method}\n` +
+        `Monto a depositar: ${formatMoney(amount)}\n` +
+        `Cuenta: ${user.email}`;
+
+      window.open(buildWhatsAppUrl(waMsg), "_blank");
+    }
+
+    function handleRedeemCode(e) {
+      e.preventDefault();
+      const user = getActiveUser();
+      if (!user) return;
+
+      const code = document.getElementById("nineDigitCode").value.trim();
+      if (!/^\d{9}$/.test(code)) {
+        showToast("El código debe tener exactamente 9 dígitos.");
+        return;
+      }
+
+      if (!VALID_NINE_DIGIT_CODES.includes(code)) {
+        showToast("Código inválido. No se acreditó saldo.");
+        return;
+      }
+
+      if ((user.usedCodes || []).includes(code)) {
+        showToast("Este código ya fue utilizado en este dispositivo.");
+        return;
+      }
+
+      const pending = user.pendingDeposit;
+      if (!pending || !pending.amount || pending.amount <= 0) {
+        showToast("Primero genera tu orden de depósito con el monto a depositar.");
+        return;
+      }
+
+      const amountToCredit = Number(pending.amount);
+
+      // Marcar código como usado y limpiar orden pendiente tras confirmar
+      user.usedCodes.push(code);
+      const depositRef = pending.orderCode;
+      user.pendingDeposit = null;
+      saveState();
+
+      // Notificación de comprobación durante 7 segundos sin contador numérico visible
+      const overlay = document.getElementById("checkingOverlay");
+      document.getElementById("checkingTitle").textContent = "Comprobando...";
+      document.getElementById("checkingDesc").textContent = "Verificando acreditación de saldo en tu cuenta.";
+      overlay.classList.add("open");
+
+      setTimeout(() => {
+        const current = getActiveUser();
+        if (current) {
+          current.balance = Number((Number(current.balance || 0) + amountToCredit).toFixed(2));
+          current.history.unshift({
+            id: "REC-" + Math.floor(100000 + Math.random() * 900000),
+            type: "Recarga acreditada",
+            amount: amountToCredit,
+            detail: `Orden ${depositRef} (${pending.method}) · Código ${code}`,
+            date: nowStamp()
+          });
+          saveState();
+          renderAll();
+        }
+        overlay.classList.remove("open");
+        showToast("Saldo acreditado: +" + formatMoney(amountToCredit));
+      }, 7000);
+    }
+
+    function handleWithdrawRequest(e) {
+      e.preventDefault();
+      const user = getActiveUser();
+      if (!user) return;
+
+      const amount = parseFloat(document.getElementById("wdAmount").value);
+      const method = document.getElementById("wdMethod").value;
+      const details = document.getElementById("wdDetails").value.trim();
+
+      if (isNaN(amount) || amount <= 0 || amount > Number(user.balance)) {
+        showToast("Monto de retiro no válido o superior a tu saldo disponible.");
+        return;
+      }
+
+      user.balance = Number((Number(user.balance) - amount).toFixed(2));
+      const wdId = "RET-" + Math.floor(100000 + Math.random() * 900000);
+
+      user.history.unshift({
+        id: wdId,
+        type: "Solicitud de retiro",
+        amount: -amount,
+        detail: `${method} · ${details}`,
+        date: nowStamp()
+      });
+
+      saveState();
+      renderAll();
+
+      const waMsg =
+        `Hola AVAX MOTORS, solicito retiro de saldo:\n` +
+        `Folio: ${wdId}\n` +
+        `Usuario: ${user.name} (${user.email})\n` +
+        `Monto a retirar: ${formatMoney(amount)}\n` +
+        `Método: ${method}\n` +
+        `Datos de destino: ${details}`;
+
+      showToast("Solicitud de retiro registrada.");
+      window.open(buildWhatsAppUrl(waMsg), "_blank");
+    }
+
+    function saveRecipientProfile(e) {
+      e.preventDefault();
+      const user = getActiveUser();
+      if (!user) return;
+
+      user.recipient = {
+        name: document.getElementById("profDestName").value.trim(),
+        ci: document.getElementById("profDestCi").value.trim(),
+        phone: document.getElementById("profDestPhone").value.trim(),
+        province: document.getElementById("profDestProvince").value,
+        notes: document.getElementById("profDestNotes").value.trim()
+      };
+      saveState();
+      showToast("Perfil de destinatario guardado.");
+    }
+
+    function exportBackup() {
+      const user = getActiveUser();
+      if (!user) return;
+      const payload = btoa(unescape(encodeURIComponent(JSON.stringify(user))));
+      const box = document.getElementById("backupTextBox");
+      box.value = payload;
+      box.select();
+      document.execCommand("copy");
+      showToast("Respaldo copiado al portapapeles.");
+    }
+
+    function importBackup() {
+      const box = document.getElementById("backupTextBox");
+      const raw = box.value.trim();
+      if (!raw) {
+        showToast("Pega primero un código de respaldo.");
+        return;
+      }
+      try {
+        const decoded = JSON.parse(decodeURIComponent(escape(atob(raw))));
+        if (!decoded || !decoded.email) {
+          showToast("Respaldo inválido.");
+          return;
+        }
+        state.users[decoded.email] = decoded;
+        state.currentUser = decoded.email;
+        saveState();
+        renderAll();
+        showToast("Cuenta restaurada desde respaldo.");
+      } catch (err) {
+        showToast("No se pudo leer el respaldo.");
+      }
+    }
+
+    // =========================================================================
+    // RENDERIZADO GENERAL
+    // =========================================================================
+    function renderNav() {
+      const user = getActiveUser();
+      const navActions = document.getElementById("navActions");
+      if (!user) {
+        navActions.innerHTML = `
+          <button type="button" class="btn btn-ghost btn-sm" onclick="openAuthModal('login')">Iniciar sesión</button>
+          <button type="button" class="btn btn-primary btn-sm" onclick="openAuthModal('register')">Registrarse</button>
+        `;
+      } else {
+        navActions.innerHTML = `
+          <button type="button" class="balance-pill" onclick="document.getElementById('panel-usuario').scrollIntoView()">
+            Saldo: ${formatMoney(user.balance)}
+          </button>
+          <button type="button" class="btn btn-ghost btn-sm" onclick="logoutUser()">Salir</button>
+        `;
+      }
+    }
+
+    function renderDashboard() {
+      const user = getActiveUser();
+      const container = document.getElementById("userDashboardContainer");
+
+      if (!user) {
+        container.innerHTML = `
+          <div class="dashboard-card" style="text-align:center; padding:32px 20px;">
+            <h3 style="margin-bottom:8px;">Inicia sesión o regístrate para administrar tu saldo y pedidos</h3>
+            <p style="color:var(--text-muted); margin-bottom:18px; max-width:520px; margin-left:auto; margin-right:auto;">
+              Tu cuenta, contraseña, saldo, destinatario en Cuba, favoritos, pedidos e historial se guardan en el navegador de tu teléfono.
+            </p>
+            <div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+              <button type="button" class="btn btn-primary" onclick="openAuthModal('login')">Iniciar sesión</button>
+              <button type="button" class="btn btn-ghost" onclick="openAuthModal('register')">Registrarse por primera vez</button>
+            </div>
+          </div>
+        `;
+        return;
+      }
+
+      const pending = user.pendingDeposit;
+      const rec = user.recipient || {};
+
+      let tabContent = "";
+
+      if (activeTab === "billetera") {
+        tabContent = `
+          <div class="grid-2">
+            <div class="sub-box">
+              <h3>1. Solicitar depósito de saldo</h3>
+              <form onsubmit="handleDepositOrder(event)">
+                <div class="field">
+                  <label for="depFullName">Nombre completo</label>
+                  <input type="text" id="depFullName" required value="${pending ? pending.fullName : user.name}" />
+                </div>
+                <div class="field">
+                  <label for="depMethod">Método de pago</label>
+                  <select id="depMethod" required>
+                    <option value="Criptomonedas" ${pending && pending.method === "Criptomonedas" ? "selected" : ""}>Criptomonedas</option>
+                    <option value="Tropipay" ${pending && pending.method === "Tropipay" ? "selected" : ""}>Tropipay</option>
+                    <option value="Zelle" ${pending && pending.method === "Zelle" ? "selected" : ""}>Zelle</option>
+                    <option value="Otro acordado" ${pending && pending.method === "Otro acordado" ? "selected" : ""}>Otro método acordado</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="depAmount">Monto a depositar (USD)</label>
+                  <input type="number" id="depAmount" min="1" step="0.01" required value="${pending ? pending.amount : ""}" placeholder="Ej. 1500" />
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Generar orden e ir a WhatsApp</button>
+              </form>
+
+              <hr style="border:none; border-top:1px solid var(--border); margin:18px 0;" />
+
+              <h3>2. Acreditar saldo con código de 9 dígitos</h3>
+              <div class="list-item" style="margin-bottom:12px;">
+                ${pending
+                  ? `Orden activa: <strong>${pending.orderCode}</strong> · Método: <strong>${pending.method}</strong> · Monto a acreditar: <strong>${formatMoney(pending.amount)}</strong>`
+                  : `<span style="color:var(--text-muted);">Completa y envía primero tu orden de depósito para fijar el monto a depositar.</span>`
+                }
+              </div>
+              <form onsubmit="handleRedeemCode(event)">
+                <div class="field">
+                  <label for="nineDigitCode">Código de 9 dígitos</label>
+                  <input type="text" id="nineDigitCode" maxlength="9" pattern="\\d{9}" required placeholder="Pega aquí tu código de 9 dígitos" />
+                </div>
+                <button type="submit" class="btn btn-primary" style="width:100%;">Confirmar y acreditar saldo</button>
+              </form>
+            </div>
+
+            <div class="sub-box">
+              <h3>Retirar saldo disponible</h3>
+              <p style="font-size:0.84rem; color:var(--text-muted); margin-bottom:12px;">
+                Saldo actual: <strong style="color:#fff;">${formatMoney(user.balance)}</strong>. Coordina tu retiro por WhatsApp (+13433268059).
+              </p>
+              <form onsubmit="handleWithdrawRequest(event)">
+                <div class="field">
+                  <label for="wdAmount">Monto a retirar (USD)</label>
+                  <input type="number" id="wdAmount" min="1" step="0.01" required placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="wdMethod">Método de retiro</label>
+                  <select id="wdMethod" required>
+                    <option value="Zelle">Zelle</option>
+                    <option value="CashApp">CashApp</option>
+                    <option value="Wise">Wise</option>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Otro método">Otro método</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="wdDetails">Datos de cuenta o receptor</label>
+                  <input type="text" id="wdDetails" required placeholder="Correo, usuario o datos acordados" />
+                </div>
+                <button type="submit" class="btn btn-ghost" style="width:100%;">Solicitar retiro por WhatsApp</button>
+              </form>
+            </div>
+          </div>
+        `;
+      } else if (activeTab === "pedidos") {
+        tabContent = `
+          <div class="sub-box">
+            <h3>Mis pedidos y apartados</h3>
+            ${user.orders.length === 0
+              ? `<p style="color:var(--text-muted); font-size:0.88rem;">Aún no tienes compras ni apartados registrados.</p>`
+              : user.orders.map((o) => `
+                <div class="list-item">
+                  <div style="display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap;">
+                    <strong>${o.type} · ${o.id}</strong>
+                    <span style="color:#93c5fd;">${o.status}</span>
+                  </div>
+                  <div style="margin-top:4px;">Moto: <strong>${o.motoName}</strong> · Monto: <strong>${formatMoney(o.chargedAmount)}</strong></div>
+                  <div style="color:var(--text-muted); font-size:0.82rem;">
+                    Destinatario: ${o.recipient.name} (${o.recipient.province}) · ${o.deliveryEstimate} · ${o.date}
+                  </div>
+                </div>
+              `).join("")
+            }
+          </div>
+        `;
+      } else if (activeTab === "historial") {
+        tabContent = `
+          <div class="sub-box">
+            <h3>Historial de billetera</h3>
+            ${user.history.length === 0
+              ? `<p style="color:var(--text-muted); font-size:0.88rem;">No hay movimientos registrados aún.</p>`
+              : user.history.map((h) => {
+                const isPos = Number(h.amount) >= 0;
+                return `
+                  <div class="list-item" style="display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap;">
+                    <div>
+                      <strong>${h.type}</strong> · <span style="color:var(--text-muted); font-size:0.8rem;">${h.id} · ${h.date}</span>
+                      <div style="font-size:0.82rem; color:var(--text-muted);">${h.detail}</div>
+                    </div>
+                    <strong style="color:${isPos ? "var(--success)" : "#fca5a5"};">
+                      ${isPos ? "+" : "-"}${formatMoney(Math.abs(h.amount))}
+                    </strong>
+                  </div>
+                `;
+              }).join("")
+            }
+          </div>
+        `;
+      } else if (activeTab === "destinatario") {
+        tabContent = `
+          <div class="sub-box" style="max-width:600px;">
+            <h3>Perfil de destinatario en Cuba</h3>
+            <form onsubmit="saveRecipientProfile(event)">
+              <div class="field">
+                <label for="profDestName">Nombre completo del destinatario</label>
+                <input type="text" id="profDestName" value="${rec.name || ""}" required />
+              </div>
+              <div class="field">
+                <label for="profDestCi">Carné de identidad / Documento</label>
+                <input type="text" id="profDestCi" value="${rec.ci || ""}" required />
+              </div>
+              <div class="field">
+                <label for="profDestPhone">Teléfono en Cuba</label>
+                <input type="text" id="profDestPhone" value="${rec.phone || ""}" required />
+              </div>
+              <div class="field">
+                <label for="profDestProvince">Provincia</label>
+                <select id="profDestProvince">
+                  ${["La Habana","Matanzas","Artemisa","Pinar del Río","Mayabeque","Villa Clara","Cienfuegos","Sancti Spíritus","Ciego de Ávila","Camagüey","Las Tunas","Holguín","Granma","Santiago de Cuba","Guantánamo","Isla de la Juventud"]
+                    .map((p) => `<option value="${p}" ${rec.province === p ? "selected" : ""}>${p}</option>`).join("")}
+                </select>
+              </div>
+              <div class="field">
+                <label for="profDestNotes">Notas adicionales</label>
+                <textarea id="profDestNotes" rows="2">${rec.notes || ""}</textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Guardar destinatario</button>
+            </form>
+          </div>
+        `;
+      } else if (activeTab === "respaldo") {
+        tabContent = `
+          <div class="sub-box" style="max-width:680px;">
+            <h3>Respaldo de cuenta en el navegador</h3>
+            <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">
+              Copia tu código de respaldo para conservar tu cuenta o restaurarla si cambias de dispositivo o limpias el navegador.
+            </p>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+              <button type="button" class="btn btn-primary btn-sm" onclick="exportBackup()">Generar y copiar respaldo</button>
+              <button type="button" class="btn btn-ghost btn-sm" onclick="importBackup()">Restaurar desde texto</button>
+            </div>
+            <div class="field">
+              <textarea id="backupTextBox" rows="4" placeholder="Aquí aparecerá tu respaldo o pega aquí un respaldo para restaurar..."></textarea>
+            </div>
+          </div>
+        `;
+      }
+
+      container.innerHTML = `
+        <div class="dashboard-card">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
+            <div>
+              <div style="font-size:0.82rem; color:var(--text-muted);">Sesión activa</div>
+              <strong style="font-size:1.05rem;">${user.name}</strong> <span style="color:var(--text-muted); font-size:0.88rem;">(${user.email})</span>
+            </div>
+            <div class="balance-pill">Saldo disponible: ${formatMoney(user.balance)}</div>
+          </div>
+
+          <div class="tabs">
+            <button type="button" class="tab-btn ${activeTab === "billetera" ? "active" : ""}" onclick="setActiveTab('billetera')">Saldo, Recarga y Retiro</button>
+            <button type="button" class="tab-btn ${activeTab === "pedidos" ? "active" : ""}" onclick="setActiveTab('pedidos')">Mis pedidos (${user.orders.length})</button>
+            <button type="button" class="tab-btn ${activeTab === "historial" ? "active" : ""}" onclick="setActiveTab('historial')">Historial (${user.history.length})</button>
+            <button type="button" class="tab-btn ${activeTab === "destinatario" ? "active" : ""}" onclick="setActiveTab('destinatario')">Destinatario en Cuba</button>
+            <button type="button" class="tab-btn ${activeTab === "respaldo" ? "active" : ""}" onclick="setActiveTab('respaldo')">Respaldo</button>
+          </div>
+
+          ${tabContent}
+        </div>
+      `;
+    }
+
+    function renderAll() {
+      renderNav();
+      renderCatalog();
+      renderDashboard();
+    }
+
+    renderAll();
+  </script>
+</body>
+</html>
