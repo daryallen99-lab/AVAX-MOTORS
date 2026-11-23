@@ -170,9 +170,9 @@
       align-items: center;
       background-color: #160507;
       background-image:
-        linear-gradient(90deg, rgba(13, 14, 18, 0.92) 0%, rgba(13, 14, 18, 0.65) 52%, rgba(13, 14, 18, 0.35) 100%),
-        linear-gradient(180deg, rgba(13, 14, 18, 0.25) 0%, var(--bg-dark) 100%),
-        var(--hero-img, radial-gradient(circle at 70% 45%, #7f1019, #1b0508 70%));
+        linear-gradient(90deg, rgba(13, 14, 18, 0.90) 0%, rgba(13, 14, 18, 0.58) 52%, rgba(13, 14, 18, 0.25) 100%),
+        linear-gradient(180deg, rgba(13, 14, 18, 0.20) 0%, var(--bg-dark) 100%),
+        url("Images/IMG_0561.jpeg");
       background-size: cover;
       background-position: center;
     }
@@ -970,7 +970,7 @@
     </div>
   </div>
 
-  <!-- Notificación de comprobación (7 segundos sin contador visible) -->
+  <!-- Notificación de comprobación (7 segundos sin contador numérico) -->
   <div class="checking-overlay" id="checkingOverlay">
     <div class="checking-box">
       <div class="spinner"></div>
@@ -988,7 +988,7 @@
     // CONFIGURACIÓN PRINCIPAL DE AVAX MOTORS
     // =========================================================================
     const WHATSAPP_NUMBER = "13433268059";
-    const HERO_BG_IMAGE = "url('AVAX-MOTORS/images/IMG_0561.jpeg')";
+    const HERO_BG_PATH = "Images/IMG_0561.jpeg";
 
     // 30 códigos únicos de 9 dígitos generados al azar dentro del HTML
     const VALID_NINE_DIGIT_CODES = [
@@ -1081,7 +1081,13 @@
     // =========================================================================
     // UTILIDADES UI
     // =========================================================================
-    document.documentElement.style.setProperty("--hero-img", HERO_BG_IMAGE);
+    const heroSection = document.querySelector(".hero");
+    if (heroSection && HERO_BG_PATH) {
+      heroSection.style.backgroundImage =
+        `linear-gradient(90deg, rgba(13, 14, 18, 0.90) 0%, rgba(13, 14, 18, 0.58) 52%, rgba(13, 14, 18, 0.25) 100%), ` +
+        `linear-gradient(180deg, rgba(13, 14, 18, 0.20) 0%, var(--bg-dark) 100%), ` +
+        `url("${HERO_BG_PATH}")`;
+    }
 
     function showToast(msg) {
       const toast = document.getElementById("toast");
