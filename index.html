@@ -172,7 +172,7 @@
       background-image:
         linear-gradient(90deg, rgba(13, 14, 18, 0.90) 0%, rgba(13, 14, 18, 0.58) 52%, rgba(13, 14, 18, 0.25) 100%),
         linear-gradient(180deg, rgba(13, 14, 18, 0.20) 0%, var(--bg-dark) 100%),
-        url("Images/IMG_0561.jpeg");
+        url("images/IMG_0561.jpeg");
       background-size: cover;
       background-position: center;
     }
@@ -988,7 +988,7 @@
     // CONFIGURACIÓN PRINCIPAL DE AVAX MOTORS
     // =========================================================================
     const WHATSAPP_NUMBER = "13433268059";
-    const HERO_BG_PATH = "Images/IMG_0561.jpeg";
+    const HERO_BG_PATH = "images/IMG_0561.jpeg";
 
     // 30 códigos únicos de 9 dígitos generados al azar dentro del HTML
     const VALID_NINE_DIGIT_CODES = [
@@ -1086,7 +1086,7 @@
       heroSection.style.backgroundImage =
         `linear-gradient(90deg, rgba(13, 14, 18, 0.90) 0%, rgba(13, 14, 18, 0.58) 52%, rgba(13, 14, 18, 0.25) 100%), ` +
         `linear-gradient(180deg, rgba(13, 14, 18, 0.20) 0%, var(--bg-dark) 100%), ` +
-        `url("${HERO_BG_PATH}")`;
+        `url("${encodeURI(HERO_BG_PATH)}")`;
     }
 
     function showToast(msg) {
@@ -1297,7 +1297,7 @@
             : `<div class="saldo-calc"><span class="saldo-faltante">Tu saldo: ${formatMoney(balance)} · Te faltan ${formatMoney(diff)}.</span></div>`;
 
         const thumbContent = m.image
-          ? `<img src="${m.image}" alt="${m.name}" />`
+          ? `<img src="${encodeURI(m.image)}" alt="${m.name}" />`
           : `<div class="moto-placeholder">${m.name}<br><span style="font-size:0.76rem; font-weight:500;">${m.category}</span></div>`;
 
         return `
